@@ -2,39 +2,45 @@
 
 import { useEffect, useState } from "react"
 
+// import { Button } from "@/components/ui/button"
+
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
     {
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80",
-      title: "Welcome to Our Platform",
-      description: "Discover amazing features and possibilities"
+      image: "/interlinks.jpg",
+      title: "A High Quality of Service",
+      description: "Powering secure and connected environments",
+      image2: "",
+      text: ""
+      
     },
     {
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80",
-      title: "Explore Nature",
-      description: "Experience the beauty of the world around us"
+      image: "/working.jpg",
+      title: "Expertise at the Core",
+      description: "Experienced minds behind every solution"
     },
     {
-      image: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=1920&q=80",
+      image: "/big_connected_devices.jpg",
       title: "Innovation & Technology",
       description: "Building the future with cutting-edge solutions"
     },
     {
-      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80",
-      title: "Adventure Awaits",
-      description: "Embark on new journeys and create memories"
+      image: "control_room.jpg",
+      title: "Total Control. Total Visibility",
+      description: "Advanced monitoring and control room systems"
     }
   ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // Change slide every 5 seconds
+    }, 5000) 
 
     return () => clearInterval(interval)
   }, [slides.length])
+
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -50,7 +56,7 @@ export default function Home() {
 
   return (
     <div className="h-screen relative overflow-hidden">
-      {/* Slideshow Container */}
+      
       <div className="relative h-full w-full">
         {slides.map((slide, index) => (
           <div
@@ -59,16 +65,16 @@ export default function Home() {
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Background Image */}
+            
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             />
             
-            {/* Dark Overlay */}
+            
             <div className="absolute inset-0 bg-black/40" />
             
-            {/* Text Content */}
+            
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white px-4 max-w-4xl">
                 <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
@@ -77,9 +83,9 @@ export default function Home() {
                 <p className="text-xl md:text-2xl mb-8 drop-shadow-md">
                   {slide.description}
                 </p>
-                <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
-                  Get Started
-                </button>
+                {/* <Button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
+                  Contact Us
+                </Button> */}
               </div>
             </div>
           </div>

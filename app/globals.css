@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -18,7 +19,26 @@
   --muted-foreground: oklch(0.552 0.016 285.938);
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.21 0.006 285.885);
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
  
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
 
+body{
+  font-family: var(--font-montserrat);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-dm-sans {
+  font-family: var(--font-dm-sans);
+}
