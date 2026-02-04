@@ -55,6 +55,7 @@ export default function Home() {
   }
 
   return (
+    <>
     <div className="h-screen relative overflow-hidden">
       
       <div className="relative h-full w-full">
@@ -136,7 +137,7 @@ export default function Home() {
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         {slides.map((_, index) => (
           <button
-            key={index}
+          key={index}
             onClick={() => goToSlide(index)}
             className={`h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
@@ -146,6 +147,22 @@ export default function Home() {
           />
         ))}
       </div>
-    </div>
+      </div>
+      <div>
+        <video 
+   
+  autoPlay 
+  muted 
+  loop 
+  playsInline
+  className="mx-auto w-full max-w-4xl h-100 md:h-150 px-2 my-6 md:my-8 " 
+  poster="https://res.cloudinary.com/dvjx9x8l9/video/upload/v1770116282/Hiqos/vid_of_SAT_hzuyqq.jpg"
+>
+  <source src="https://res.cloudinary.com/dvjx9x8l9/video/upload/vc_h264,q_auto,f_mp4/v1770116282/Hiqos/vid_of_SAT_hzuyqq.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+</video>
+      <p className="font-dm-sans">Audio Visual Installation Setup in Shell Atlantic Towers</p>  
+      </div>
+          </>
   );
 }

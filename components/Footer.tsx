@@ -30,7 +30,7 @@ export default function Footer() {
       
           <footer
               className={`h-auto bg-[#1b2232] text-white p-4 sm:px-16 md:px-10 lg:px-20`}
-              style={{ backgroundImage : `url('/footer-bg.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+              
       >
           <div>
               
