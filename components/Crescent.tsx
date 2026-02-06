@@ -31,7 +31,7 @@ export default function Crescent({ color, maskId, className, title, text, icon, 
       y: -10,
       duration: 0.4,
       ease: "power3.out",
-      zIndex: 1000,
+      style: { zIndex: 10000 },
     });
   };
 
@@ -43,6 +43,7 @@ export default function Crescent({ color, maskId, className, title, text, icon, 
       y: 0,
       duration: 0.4,
       ease: "power3.out",
+      style: { zIndex: 0 },
     });
    }
 
@@ -64,17 +65,24 @@ export default function Crescent({ color, maskId, className, title, text, icon, 
         </mask>
       </defs>
 
-      <g mask={`url(#${maskId})`}>
+      <g mask={`url(#${maskId})`} >
       <circle
         cx={cut2X ?? 110}
         cy={cut2Y ?? 100}
         r={cut2R ?? 100}
         fill={color}
 
-      />
-      <text x="40" y="90" fontSize="16" fontWeight="bold" fill="white">{title}</text>
-      <text x="40" y="115" fontSize="12" fill="white">{text}</text>
-      {icon && <g transform="translate(40, 50)">{icon}</g>}
+        />
+        <foreignObject x="0" y="0"   width="220" height="200">
+          <div
+          className="flex h-full w-full flex-col gap-2 items-center justify-center text-center text-white"
+          >
+
+      <h3 className="text-sm font-bold tr">{title}</h3>
+      <p className="text-[10px] opacity-90 max-w-[120px] font-dm-sans">{text}</p>
+          {icon && <div >{icon}</div>}
+          </div>
+          </foreignObject>
       </g>
     </svg>
   );

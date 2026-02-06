@@ -1,7 +1,7 @@
 import { Button } from './ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import logo from '@/public/logo12.png';
 
 export default function Footer() {
 
@@ -32,11 +32,11 @@ export default function Footer() {
               className={`h-auto bg-[#1b2232] text-white p-4 sm:px-16 md:px-10 lg:px-20`}
               
       >
-          <div>
+          <div className='flex max-sm:flex-col items-end justify-between'>
               
               <div>
-                  <Image src={'/logo12.png'} alt={'Hiqos_logo'} width={90} height={90} />
-                    <p>Future-Ready Networks, Engineered Today.</p>
+                  <Image src={logo} alt={'Hiqos_logo'} width={120} height={120} />
+                    <p className=' text-lg md:text-2xl font-semibold'>Future-Ready Networks, Engineered Today.</p>
               </div>
               <Button>
                   Contact Us
@@ -46,7 +46,12 @@ export default function Footer() {
           <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8'>
               
               <div className='col-span-2'>
-                  address
+                  <h2>HIQOS Ltd. HQ</h2>
+                  <p>
+                      41, Akin Osiyemi Street, Off Allen Avenue, Ikeja, Lagos, Nigeria. <br />
+                      Phone: +234 1 342 5678 <br />
+                      
+                  </p>
               </div>
               <div>
                   <h2>Services</h2>
