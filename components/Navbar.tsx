@@ -45,7 +45,7 @@ export default function Navbar() {
             href={item.href}
             className={`relative group font-dm-sans font-semibold max-md-hidden ${isScrolled ? "text-[#333]" : "text-white"}`}>
             {item.name}
-            <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-[var(--secondary)] transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-(--secondary) transition-all duration-300 group-hover:w-full"></span>
           </Link>
         ))}
             

@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { FloatingLabelInput } from "@/components/ui/floating-label-input";
-import { FloatingLabelTextarea } from "@/components/ui/floating-label-textarea";
+import { FloatingLabelInput } from "@/components/floating-label-input";
+import { FloatingLabelTextarea } from "@/components/floating-label-textarea";
 import { useState } from "react";
 
 interface FormData {
@@ -150,7 +150,7 @@ export default function Contact() {
             />
             <Button
               type="submit"
-              className="w-full h-[45px] bg-[#e80500] hover:bg-[#c00400] text-white font-semibold py-3 px-6 rounded-md transition-colors"
+              className="w-full h-11.25 bg-[#e80500] hover:bg-[#c00400] text-white font-semibold py-3 px-6 rounded-md transition-colors"
             >
               Send Message
             </Button>
