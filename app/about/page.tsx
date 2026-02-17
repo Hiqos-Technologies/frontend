@@ -5,6 +5,7 @@ import { Binoculars, Crosshair, Goal } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 
 import Crescent from "@/components/Crescent";
+import Organogram from "@/components/organogram";
 import gsap from "gsap";
 
 export default function About() {
@@ -16,7 +17,8 @@ export default function About() {
   const images = [
     "/Saeed.jpeg",
     "/telephony.jpg",
-    "/connect.jpg"
+    "/img1.jpg",
+    "/img2.jpg",
 
   ];
 
@@ -75,7 +77,7 @@ export default function About() {
         <div ref={containerRef}
           onMouseEnter={() => timelineRef.current?.pause()}
           onMouseLeave={() => timelineRef.current?.resume()}
-          className="img relative h-[400px] md:h-[540px] w-full md:w-[500px] overflow-hidden">
+          className="img relative h-[400px] md:h-[650px] w-full md:w-[500px] overflow-hidden">
           {images.map((image, index) => (
             <div key={`${image} + ${index}`} className="animate-img absolute inset-0 flex items-center justify-center">
               <img
@@ -169,6 +171,9 @@ export default function About() {
           />
         </div>
       </div>
+
+      {/* Organogram Section */}
+      <Organogram />
     </>
   );
 
