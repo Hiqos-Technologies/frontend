@@ -29,7 +29,7 @@ export default function Footer() {
   return (
       
           <footer
-              className={`h-auto bg-[#1b2232] text-white p-4 sm:px-16 md:px-10 lg:px-20`}
+              className={`relative z-10 h-auto bg-[#1b2232] text-white p-4 sm:px-16 md:px-10 lg:px-20`}
               
       >
           <div className='flex max-sm:flex-col items-end justify-between'>
