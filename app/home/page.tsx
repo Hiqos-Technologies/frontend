@@ -1,19 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Marquee from "@/components/Marquee";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 // import { Button } from "@/components/ui/button"
 
+// Skeleton component
+function Skeleton({ className }: { className?: string }) {
+  return (
+    <div className={`animate-pulse bg-gray-300 ${className}`} />
+  );
+}
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
 
   const slides = [
     {
       image: "/interlinks.jpg",
-      title: "A High Quality of Service",
+      title: "High Quality of Service",
       description: "Powering secure and connected environments",
       image2: "",
       text: "",
@@ -36,12 +51,68 @@ export default function Home() {
   ];
 
   useEffect(() => {
+    // Simulate loading - show skeleton for 1.5 seconds
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(loadingTimer);
+      clearInterval(interval);
+    };
   }, [slides.length]);
+
+  // GSAP ScrollTrigger animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Video container animation - animate in from bottom with scale
+      if (videoContainerRef.current) {
+        gsap.fromTo(
+          videoContainerRef.current,
+          { y: 100, opacity: 0, scale: 0.9 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: videoContainerRef.current,
+              start: "top 80%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // Marquee animation - slide in from sides
+      if (marqueeRef.current) {
+        gsap.fromTo(
+          marqueeRef.current,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: marqueeRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    });
+
+    // Cleanup all GSAP animations
+    return () => ctx.revert();
+  }, []);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -57,8 +128,23 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-screen relative overflow-hidden">
-        <div className="relative h-full w-full">
+      {isLoading ? (
+        // Skeleton loading state
+        <div className="h-screen relative overflow-hidden bg-gray-100">
+          <div className="relative h-full w-full">
+            <Skeleton className="absolute inset-0 bg-gray-200" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center px-4 max-w-4xl">
+                <Skeleton className="h-16 w-3/4 mx-auto mb-6 rounded" />
+                <Skeleton className="h-8 w-1/2 mx-auto rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        // Actual content
+        <div className="h-screen relative overflow-hidden">
+          <div className="relative h-full w-full">
           {slides.map((slide, index) => (
             <div
               key={index}
@@ -67,7 +153,7 @@ export default function Home() {
               }`}
             >
               <div
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${slide.image})` }}
               />
 
@@ -75,7 +161,7 @@ export default function Home() {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-white px-4 max-w-4xl">
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+                  <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">
                     {slide.title}
                   </h1>
                   <p className="text-xl md:text-2xl mb-8 drop-shadow-md">
@@ -93,7 +179,7 @@ export default function Home() {
         {/* Navigation Arrows */}
         <button
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
+          className="absolute max-[400px]:left-1 sm:left-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +198,7 @@ export default function Home() {
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
+          className="absolute max-[400px]:right-1 sm:right-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -145,13 +231,15 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div>
+      )}
+      <div ref={videoContainerRef} className='mb-8'>
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="mx-auto w-full max-w-4xl h-100 md:h-150 px-2 my-6 md:my-8 "
+          className="mx-auto w-full  max-w-4xl h-100 md:h-150 px-2 my-6 md:my-8 rounded-xl"
           poster="https://res.cloudinary.com/dvjx9x8l9/video/upload/v1770116282/Hiqos/vid_of_SAT_hzuyqq.jpg"
         >
           <source
@@ -160,14 +248,12 @@ export default function Home() {
           />
           Your browser does not support the video tag.
         </video>
-        <p className="font-dm-sans">
+        <p className="font-dm-sans font-bold text-center">
           Audio Visual Installation Setup in Shell Atlantic Towers
         </p>
       </div>
-      <div>
-        
-      </div>
-      <div>
+    
+      <div ref={marqueeRef}>
         <Marquee/>
       </div>
     </>

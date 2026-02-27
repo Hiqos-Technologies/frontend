@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { FloatingLabelInput } from "@/components/floating-label-input";
 import { FloatingLabelTextarea } from "@/components/floating-label-textarea";
+import { useForm } from '@formspree/react';
 import { useState } from "react";
 
 interface FormData {
@@ -20,6 +21,8 @@ interface FormErrors {
 }
 
 export default function Contact() {
+
+  const [state, formspreeSubmit] = useForm("xkoveogz");
   const [formData, setFormData] = useState<FormData>({
     fullname: "",
     email: "",
@@ -28,7 +31,6 @@ export default function Contact() {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -46,11 +48,8 @@ export default function Contact() {
       newErrors.email = "Please enter a valid email address";
     }
 
-    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
     }
 
     if (!formData.message.trim()) {
@@ -79,26 +78,16 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      setIsSubmitted(true);
-      console.log("Form submitted:", formData);
-      setTimeout(() => {
-        setFormData({
-          fullname: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-        setIsSubmitted(false);
-      }, 3000);
+      await formspreeSubmit(e);
     }
   };
 
   return (
     <div className="bg-[#1b2232] min-h-screen">
-      <div className="max-w-2xl mx-auto px-4 py-16">
+      <div className="max-w-2xl mx-auto px-4 py-16 pt-24">
         <h1 className="text-4xl font-bold text-white text-center pb-6">
           Contact Us
         </h1>
@@ -106,7 +95,7 @@ export default function Contact() {
           Have a question or want to work with us? Send us a message and we&apos;ll get back to you as soon as possible.
         </p>
 
-        {isSubmitted ? (
+        {state.succeeded ? (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-8 rounded-lg text-center">
             <p className="text-lg font-semibold">Thank you for your message!</p>
             <p className="mt-2">We will get back to you soon.</p>
@@ -150,9 +139,36 @@ export default function Contact() {
             />
             <Button
               type="submit"
-              className="w-full h-11.25 bg-[#e80500] hover:bg-[#c00400] text-white font-semibold py-3 px-6 rounded-md transition-colors"
+              disabled={state.submitting}
+              className="w-full h-11.25 bg-[#e80500] hover:bg-[#c00400] text-white font-semibold py-3 px-6 rounded-md transition-colors flex items-center justify-center gap-2"
             >
-              Send Message
+              {state.submitting ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
             </Button>
           </form>
         )}
