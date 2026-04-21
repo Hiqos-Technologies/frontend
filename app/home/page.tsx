@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import Image from "next/image";
 import Marquee from "@/components/Marquee";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -152,9 +153,14 @@ export default function Home() {
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${slide.image})` }}
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority
+                quality={75}
+                sizes="100vw"
+                className="object-cover"
               />
 
               <div className="absolute inset-0 bg-black/40" />
