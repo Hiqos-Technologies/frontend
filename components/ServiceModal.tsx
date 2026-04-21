@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import Image from 'next/image';
-import { createPortal } from 'react-dom';
+import Image from "next/image";
+import { createPortal } from "react-dom";
 
 export interface ServiceModalProps {
   isOpen: boolean;
@@ -24,15 +24,15 @@ export default function ServiceModal({
 }: ServiceModalProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
@@ -47,7 +47,6 @@ export default function ServiceModal({
         className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
@@ -69,21 +68,17 @@ export default function ServiceModal({
           </svg>
         </button>
 
-        
         <div className="p-6 sm:p-8">
-          
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6 bg-gradient-to-r from-[var(--secondary)] to-[#1b2232] bg-clip-text text-transparent">
             {heading}
           </h2>
 
-          
           <div className="mb-6">
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
               {description}
             </p>
           </div>
 
-          
           {images.length > 0 && (
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               {images.map((img, index) => (
@@ -91,7 +86,7 @@ export default function ServiceModal({
                   <Image
                     src={img}
                     alt={`${heading} image ${index + 1}`}
-                    width={400}
+                    width={600}
                     height={500}
                     className="w-full h-48 sm:h-64 object-contain rounded-lg"
                   />
@@ -100,7 +95,6 @@ export default function ServiceModal({
             </div>
           )}
 
-          
           <div>
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
               {additionalText}
@@ -109,6 +103,6 @@ export default function ServiceModal({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

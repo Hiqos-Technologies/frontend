@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -23,7 +23,7 @@ export default function ServiceSlides() {
   const networkInfraRef = useRef<HTMLDivElement>(null);
   const videoSurveillanceRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     const audioVisual = audioVisualRef.current;
     const futureNetworks = futureNetworksRef.current;
@@ -77,7 +77,7 @@ export default function ServiceSlides() {
         <div className="absolute z-10 left-5 top-1/4 sm:right-1/6 flex items-center justify-center">
           <div
             ref={audioVisualRef}
-            className="text-3xl sm:text-5xl md:text-6xl font-bold text-transparent [-webkit-text-stroke:2px_#3b82f6]"
+            className="text-3xl sm:text-5xl md:text-6xl font-bold text-transparent [-webkit-text-stroke:2px_#3b82f6] opacity-0 translate-x-full"
           >
             Audio Visual Solutions
           </div>
@@ -88,7 +88,7 @@ export default function ServiceSlides() {
           <div
             ref={futureNetworksRef}
             className="text-3xl sm:text-5xl md:text-6xl text-white font-bold
-             drop-shadow-[2px_1px_2px_rgba(209,34,23,1)]"
+             drop-shadow-[2px_1px_2px_rgba(209,34,23,1)] opacity-0 -translate-x-full"
           >
             Future Ready Networks
           </div>
@@ -98,7 +98,7 @@ export default function ServiceSlides() {
         <div className="absolute z-10 top-60 sm:top-60 left-1/5 flex items-center justify-center">
           <div
             ref={intrusionRef}
-            className="text-xl sm:text-3xl md:text-4xl font-bold text-yellow-400"
+            className="text-xl sm:text-3xl md:text-4xl font-bold text-yellow-400 opacity-0 translate-x-full"
           >
             Intrusion Detection System
           </div>
@@ -109,7 +109,7 @@ export default function ServiceSlides() {
       <div className="absolute top-70 sm:top-95 left-1/4 flex items-center justify-center">
           <div
             ref={itSupportRef}
-            className="text-xl sm:text-3xl md:text-4xl font-bold text-[#3b82f6]"
+            className="text-xl sm:text-3xl md:text-4xl font-bold text-[#3b82f6] opacity-0 -translate-x-full"
           >
             IT Support
           </div>
@@ -119,7 +119,7 @@ export default function ServiceSlides() {
         <div className="absolute z-10 top-90 sm:bottom-50 right-1/5 flex items-center justify-center">
           <div
             ref={accessControlRef}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#ff1100]"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#ff1100] opacity-0 translate-x-full"
           >
             Access Control
           </div>
@@ -131,7 +131,7 @@ export default function ServiceSlides() {
       <div className="absolute top-100 left-1/5 sm:bottom-1/4 sm:left-1/3 flex items-center justify-center">
           <div
             ref={controlRoomRef}
-            className="text-xl sm:text-3xl md:text-4xl font-bold text-white/90"
+            className="text-xl sm:text-3xl md:text-4xl font-bold text-white/90 opacity-0 -translate-x-full"
           >
             Control Room
           </div>
@@ -141,7 +141,7 @@ export default function ServiceSlides() {
         <div className="absolute bottom-3/7 sm:bottom-30 right-1/3 flex items-center justify-center">
           <div
             ref={itProcurementRef}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0ff]"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0ff] opacity-0 translate-x-full"
           >
             IT Procurement
           </div>
@@ -151,7 +151,7 @@ export default function ServiceSlides() {
          <div className="absolute z-10 top-1/5 sm:left-1/4 left-1/5 flex items-center justify-center">
           <div
             ref={networkInfraRef}
-            className="text-xl sm:text-3xl md:text-4xl font-bold text-[#15ff00]"
+            className="text-xl sm:text-3xl md:text-4xl font-bold text-[#15ff00] opacity-0 -translate-x-full"
           >
             Network Infrastructure
           </div>
@@ -163,7 +163,7 @@ export default function ServiceSlides() {
               <div className="absolute bottom-3/8 sm:bottom-1/10 left-1/11 sm:left-1/5 flex items-center justify-center">
           <div
             ref={videoSurveillanceRef}
-            className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#ff7300]"
+            className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#ff7300] opacity-0 translate-x-full"
           >
             Video Surveillance System
           </div>

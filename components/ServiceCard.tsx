@@ -5,6 +5,7 @@ import React from 'react';
 import ServiceModal from './ServiceModal';
 
 export interface ServiceCardProps {
+  id?: string;
   icon?: React.ReactNode;
   image?: string;
   heading: string;
@@ -15,10 +16,11 @@ export interface ServiceCardProps {
   onClick?: () => void;
 }
 
-export default function ServiceCard({ icon, image, heading, description, onClick }: ServiceCardProps) {
+export default function ServiceCard({ id, icon, image, heading, description, onClick }: ServiceCardProps) {
   return (
     <div
-      className="relative rounded-lg p-0.75 bg-linear-to-br via-[#f3f3f3] from-(--secondary) to-[#1d84d0] hover:shadow-xl transition-shadow duration-300 cursor-pointer group"
+      id={id}
+      className="relative rounded-lg p-0.75 bg-linear-to-br via-[#f3f3f3] from-(--secondary) to-[#1d84d0] hover:shadow-xl transition-shadow duration-300 cursor-pointer group scroll-mt-24"
       onClick={onClick}
     >
       <div className="relative bg-white rounded-lg h-full p-6">
@@ -91,6 +93,7 @@ export function ServiceGrid({ services, title = "Our Services", }: ServiceGridPr
           {services.map((service, index) => (
             <ServiceCard
               key={index}
+              id={service.id}
               icon={service.icon}
               image={service.image}
               heading={service.heading}

@@ -5,17 +5,19 @@ import ServiceSlides from "@/components/ServiceSlides";
 export default function Services() {
   const services = [
     {
+      id: "audio-visual",
       heading: "Audio Visual Solutions",
       description:
         "Audio Visual Solutions are designed to solve communication needs. Now more than ever, the world has never been closer with effective Audio Visual Solutions in place",
       image: "/audio.svg",
       modalDescription: `Audio Visual Solutions are designed to solve communication needs. Now more than ever, the world has never been closer with effective Audio Visual Solutions in place. 
       HIQOS technologies offers you a simple to operate, cost effective, flexible Audio Visual Solutions to accommodate future change and technological advances`,
-      modalImages: ["/AVatFMH.jpeg"],
+      modalImages: ["/AVatFMH.jpeg", "/work on going SAT.jpeg"],
       additionalText: `Our individually tailored AVS are matched to your business needs and budgets, support communication and knowledge sharing, encourage collaborations with the benefit of time saving, value creation and functionality. 
       With our extensive knowledge in the planning, designing, installation and programming, we deliver optimum performance AVS that puts into consideration Digital Display, Interactive Display, Lighting, Sounds and Operating Control.`,
     },
     {
+      id: "intrusion-detection",
       heading: "Intrusion Detection",
       description:
         "Advanced security systems to protect your premises from unauthorized access and threats.",
@@ -25,27 +27,29 @@ export default function Services() {
 We play a critical role through the installation of perimeter security system by protecting them from vulnerability exploit.
 
 We supply and install IDS that uses Fiber Optic systems that detect, locate and classify vibrations caused by physical activity.`,
-      modalImages: ["/intrusion.jpg"],
+      modalImages: ["/ids.jpeg", "/mrAkin.jpeg"],
       additionalText: `Our installation is designed to cover long distance detection of intrusion and includes smart perimeter camera. It monitors full time, all weather intrusion around the perimeter, it provides real time, efficient, continuous perimeter security with maximum coverage.
 
 Our engineers put their wealth of knowledge to work and are able to calibrate and optimize the system to fit the need of the client.`,
     },
     {
+      id: "it-support",
       heading: "IT Support",
       description:
         "HIQOS offers a range of support services that is tailored specifically to your need and help you achieve your business goals.",
       image: "/support.svg",
       modalDescription: `HIQOS offers a range of support services that is tailored specifically to your need, and help you achieve your business goals.
 
-We set up, manage and monitor your core IT infastructure to keep your business running without interruption or downtime.
+We set up, manage and monitor your core IT infrastructure to keep your business running without interruption or downtime.
 
 We assist you keep your workstation server and company data safe within enterprise grade security.`,
-      images: [],
+      modalImages: ["/work.jpeg", "/ItSupport.jpeg"],
       additionalText: `We offer expert support in areas from Audio Visual Support, CCTV /Access Control, Hardware and Software Support, IDS Support.
 
 We ensure consistent support and monitoring by regular performance evaluation, and we are within customer reach at every turn.`,
     },
     {
+      id: "access-control",
       heading: "Access Control",
       description:
         "Secure access management systems with biometric and card-based authentication solutions.",
@@ -59,6 +63,7 @@ We ensure consistent support and monitoring by regular performance evaluation, a
         Our access control systems is not limited to entry but can also be used in gathering data, integration with canteen management system which helps provide an efficient system while saving time and resources.`,
     },
     {
+      id: "video-surveillance",
       heading: "Video Surveillance Systems",
       description:
         "We understand that defending your business, protecting assets and deterring crime are essential if you want to keep your businesses and employees safe",
@@ -68,6 +73,7 @@ We ensure consistent support and monitoring by regular performance evaluation, a
       additionalText: `Hiqos has delivered high end Video Surveillance projects across the nation including Oil and Gas Companies, partnering with world class security equipment manufacturers including Pelco, Flir, Hikvision etc. to design video surveillance solutions that is suitable for our Client's demands.`,
     },
     {
+      id: "control-room",
       heading: "Control Room Solutions",
       description:
         "Integrated command and control centers for monitoring and managing critical operations.",
@@ -81,6 +87,7 @@ We help with customized control room solutions for a wide range of applications.
 We understand that a well designed control room is your assurance of safer operations, attentive monitoring, quicker responses, as well as higher productivity`,
     },
     {
+      id: "it-procurement",
       heading: "IT Procurement",
       description:
         "End-to-end procurement services for all your hardware and software requirements.",
@@ -88,27 +95,29 @@ We understand that a well designed control room is your assurance of safer opera
       modalDescription: `We know IT Procurement is much more than just finding the lowest cost option.
 
 We help balance cost against quality. We work with industry leading hardware and software manufacturers as well as some of the world's largest ICT brands.`,
-      modalImages: ["/procurement1.jpg", "/procurement2.jpg"],
+      modalImages: ["/procure.jpeg", "/procure1.jpeg", "/procure2.jpeg"],
       additionalText: `We will handle your complete procurement process from consultation, right through to product supply.
 
 We will even assist with configuration, installation and support if you need it. We are always on hand to offer genuine support.`,
     },
     {
+      id: "network-infrastructure",
       heading: "Network Infrastructure",
       description:
         "Robust networking solutions including structured cabling, switches, and wireless systems.",
       image: "/network.svg",
-      modalDescription: `Network Infastructure is an important component of modern business operations. It ensures business have effective connectivity, communication and management between users, equipment and network.
+      modalDescription: `Network Infrastructure is an important component of modern business operations. It ensures business have effective connectivity, communication and management between users, equipment and network.
 
 Our network services range from design and installation of data networks including LANs, WANs, satellite network, terrestrial wireless networks, and VPNs.
 
 Our network engineers have vast experience in network equipment and services.`,
-      modalImages: ["/network1.jpg", "/network2.jpg"],
+      modalImages: ["/cam1.jpeg", "/ItSupport.jpeg"],
       additionalText: `We are able to put vast experience to work creating an inter-connectivity within such as routers, switches, LAN cards, Wireless Access Points, Ethernet and networking software for operating systems, security. network operations and management.
 
 We are a CISCO Certified partner in building advanced networks, we are also licensed by the Nigerian Communication Commission (NCC)..`,
     },
     {
+      id: "renewable-energy",
       heading: "Renewable Energy",
       description:
         "We Offer efficient, reliable, and durable solar energy solutions in consumer as well as commercial spaces",
@@ -118,6 +127,7 @@ We are a CISCO Certified partner in building advanced networks, we are also lice
       additionalText: `Our solar solutions are designed to meet the unique needs of our clients, whether it's for residential, commercial, or industrial applications. We provide end-to-end services, from initial consultation and system design to installation and ongoing maintenance.`,
     },
     {
+      id: "sps-wellhead",
       heading: "SPS Wellhead Automation",
       description:
         "We provide comprehensive wellhead automation solutions, including control systems, instrumentation, and remote monitoring capabilities.",

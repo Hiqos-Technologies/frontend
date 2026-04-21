@@ -127,7 +127,7 @@ export default function Sidebar() {
       >
         {/* Header with close button */}
         <div className="flex justify-between items-center p-6 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-800">Menu</h2>
+          
           <button
             onClick={closeSidebar}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"

@@ -22,8 +22,10 @@ export default function About() {
 
   const images = [
     "/Saeed.jpeg",
-    "/telephony.jpg",
+    "/highUp.jpeg",
     "/img1.jpg",
+    "/ids.jpeg",
+    "/mrAkin.jpeg",
     "/img2.jpg",
 
   ];
@@ -166,15 +168,17 @@ export default function About() {
 
       {/* This is the Crescent area  */}
 
+          {/* This is the one that shows for mobile */}
       <div className=" p-5 min-h-[110vh] z-0 relative bg-[#f5f5f5]">
-        <div className="flex flex-col items-center justify-center border-4 gap-4 min-[1000px]:hidden">
+        <div className="flex flex-col items-center gap-5 pt-10 justify-center  min-[1000px]:hidden">
+          <div className="h-5"></div>
           <Crescent
-            color="#4f46e5"
+            color="#4f4"
             maskId="crescent-mask-1"
-            className="w-fit mx-auto"
+            className="w-full mx-auto h-full pl-10"
             title="Our Vision"
             text="Our primary purpose is to build a distinct brand known for delivering high quality customer services across Africa at affordable cost in the field of technology"
-            icon={<Binoculars size={24} color="white" />}
+            icon={<Binoculars size={18} color="white" />}
             cutX={-20}
             cutY={205}
             cutR={100}
@@ -183,26 +187,31 @@ export default function About() {
           <Crescent
             color="#e80500"
             maskId="crescent-mask-2"
-            className="w-fit mx-auto"
+            className="w-full mx-auto h-full pl-10 "
             title="Our Mission"
             text="Delivering high-impact, cost-effective solutions by aligning with client needs and empowering motivated teams to drive maximum ROI. "
-            icon={<Goal size={24} color="white" />}
+            icon={<Goal size={18} color="white" />}
             cutY={140}
             cutR={75}
             cutX={255}
           />
           <Crescent
-            color="#1b2232"
+            color="#132"
             maskId="crescent-mask-3"
-            className="w-fit mx-auto"
+            className="w-full mx-auto h-full pl-10"
             title="Core Values"
             text="Service | Loyalty | Integrity | Innovation | Teamwork | Value Creation | Expertise | Ethics | Safety "
-            icon={<Crosshair size={24} color="white" />}
+            icon={<Crosshair size={18} color="white" />}
             cutY={-37}
             cutR={85}
             cutX={69}
           />
         </div>
+
+
+        {/* This part is for the desktop view */}
+
+        
         <div className="hidden min-[1000px]:block">
           <Crescent
             color="#4f46e5"
@@ -262,7 +271,7 @@ export default function About() {
           <div className="flex items-center max-sm:h-30 justify-center gap-2 col-span-2 lg:row-start-2 md:row-start-2">
 
           <div data-partner-card className="bg-blue-100 w-full h-full flex items-center justify-center rounded-xl hover:scale-105 transition-transform duration-300 hover:shadow-xl cursor-pointer">
-            <Image src="/NetApp.png" alt="" width={70} height={100}/>
+            <Image src="/NetApp.png" alt="" width={70} height={100} />
           </div>
           <div data-partner-card className="shadow-md w-full h-full flex items-center justify-center rounded-xl hover:scale-105 transition-transform duration-300 hover:shadow-xl cursor-pointer">
             <Image src={"/hp.png"} alt={"icon"} width={80} height={100}/>
@@ -290,7 +299,7 @@ export default function About() {
              <Image src={"/clearone.png"} alt={"icon"} width={120} height={70}/>
           </div>
 
-<div data-partner-card className="bg-white px-1.5 shadow-md max-sm:h-30 lg:col-start-9 row-start-3 rounded-xl flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-xl cursor-pointer">
+          <div data-partner-card className="bg-white px-1.5 shadow-xl max-sm:h-30 lg:col-start-9 row-start-3 rounded-xl flex items-center justify-center hover:scale-105 transition-transform duration-300 hover:shadow-xl cursor-pointer">
              <Image src={"/qsys.png"} alt={"icon"} width={120} height={70}/>
           </div>
         </div>
