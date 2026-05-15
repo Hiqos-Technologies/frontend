@@ -123,7 +123,7 @@ export default function ServiceSlides() {
         </div>
 
         {/* Intrusion Detection System - slides from right */}
-        <div className="absolute max-[400px]:top-5/15 z-10 lg:top-58 top-64 sm:top-60 left-1/5 flex items-center justify-center">
+        <div className="absolute min-[1100px]:top-5/15 max-[400px]:top-5/15 z-10 lg:top-40 top-64 sm:top-60 left-1/5 flex items-center justify-center">
           <div
             ref={intrusionRef}
             className="text-xl sm:text-3xl md:text-4xl font-bold text-yellow-400 opacity-0 translate-x-full"
@@ -134,7 +134,7 @@ export default function ServiceSlides() {
 
 
       {/* IT Support - slides from left */}
-      <div className="absolute lg:top-110 md:top-120 top-70 sm:top-95 left-1/4 flex items-center justify-center">
+      <div className="absolute min-[1100px]:top-1/15 lg:top-100 md:top-120 top-70 sm:top-95 left-1/4 flex items-center justify-center">
           <div
             ref={itSupportRef}
             className="text-xl sm:text-3xl md:text-4xl font-bold text-[#3b82f6] opacity-0 -translate-x-full"
@@ -188,7 +188,7 @@ export default function ServiceSlides() {
 
 
               {/* Video Surveillance System - slides from right */}
-              <div className="absolute max-[400px]:bottom-3/15 lg:bottom-2/10 md:bottom-70 bottom-3/8 sm:bottom-1/10 left-1/11 md:left-1/9 sm:left-1/5 flex items-center justify-center">
+              <div className="absolute max-[400px]:bottom-3/15 lg:bottom-1/16 min-[1100px]:bottom-1/15 md:bottom-70 bottom-3/8 sm:bottom-1/10 left-1/11 md:left-1/9 sm:left-1/5 flex items-center justify-center">
           <div
             ref={videoSurveillanceRef}
             className="text-2xl sm:text-4xl md:text-5xl font-bold text-[#ff7300] opacity-0 translate-x-full"
