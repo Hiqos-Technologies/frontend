@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,8 +19,20 @@ interface TeamMemberCardProps {
 }
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+  const [isTapped, setIsTapped] = useState(false);
+
+  const handleToggle = () => {
+    setIsTapped((prev) => !prev);
+  };
+
+  // Determine if overlay should be visible (hover on desktop, tap on mobile)
+  const overlayVisible = isTapped;
+
   return (
-    <div className="group relative overflow-hidden rounded-lg bg-gray-200 shadow-lg transition-all duration-300 hover:shadow-2xl">
+    <div
+      className="group relative overflow-hidden rounded-lg bg-gray-200 shadow-lg transition-all duration-300 hover:shadow-2xl"
+      onClick={handleToggle}
+    >
       <div className="aspect-square w-full overflow-hidden">
         <Image
           src={member.image}
@@ -32,9 +44,17 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         />
       </div>
 
-      {/* Info Overlay - Animates from top to bottom on hover */}
-      <div className="absolute inset-x-0 bottom-0 top-0 flex translate-y-full flex-col justify-end bg-linear-to-t from-[#1b2232]/95 via-[#1b2232]/80 to-transparent p-4 transition-transform duration-300 ease-out group-hover:translate-y-0">
-        <div className="transform translate-y-4 opacity-0 transition-all duration-300 delay-100 group-hover:translate-y-0 group-hover:opacity-100">
+      {/* Info Overlay - Shows on hover (desktop) and tap-to-toggle (mobile) */}
+      <div
+        className={`absolute inset-x-0 bottom-0 top-0 flex flex-col justify-end bg-linear-to-t from-[#1b2232]/95 via-[#1b2232]/80 to-transparent p-4 transition-transform duration-300 ease-out ${
+          overlayVisible ? "translate-y-0" : "translate-y-full"
+        } group-hover:translate-y-0`}
+      >
+        <div
+          className={`transform transition-all duration-300 delay-100 ${
+            overlayVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          } group-hover:translate-y-0 group-hover:opacity-100`}
+        >
           <h3 className="text-xl font-bold text-white">{member.name}</h3>
           <p className="text-sm text-gray-300">{member.role}</p>
         </div>

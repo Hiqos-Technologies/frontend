@@ -5,6 +5,7 @@ import { Binoculars, Crosshair, Goal } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 
 import Crescent from "@/components/Crescent";
+import CrescentSection from "@/components/CrescentSection";
 import Image from "next/image";
 import Organogram from "@/components/organogram";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -131,18 +132,18 @@ export default function About() {
           <h1 className="text-4xl font-bold text-white text-center pt-25 pb-6">About Us</h1>
       <div className=" h-auto sm:p-8 flex flex-col md:flex-row w-11/12 mx-auto overflow-hidden gap-8 items-center justify-center">
 
-        <div className=" px-3 sm:px-6 py-4 bg-[#f5f5f5] rounded font-montserrat">
-          <p className="text-center md:text-justify  text-[#1b2232] mt-4 text-lg md:max-w-2xl mx-auto">
+        <div className=" px-3 sm:px-6 py-4  rounded font-montserrat">
+          <p className="text-center md:text-justify  text-[#fff] mt-4 text-lg md:max-w-2xl mx-auto">
             HIQOS, an acronym for &quot;High Quality of Service&quot; is a versatile Information Technology company registered
             by Corporate Affairs Commission (CAC) on April 19, 1996, under the Company Allied Matters Act of 1990 to offer innovative technologies and solutions for complex communication
             needs specializing in Audio-Visual, Security Technologies & IT Infrastructural Services to meet organizational business needs.
           </p>
-          <p className="text-center md:text-justify text-[#1b2232] mt-4 text-lg max-w-2xl mx-auto">
+          <p className="text-center md:text-justify text-[#fff] mt-4 text-lg max-w-2xl mx-auto">
             Our company partners with leading global companies in various industries, the likes of Crestron, Extron, Pelco, ClearOne,
             Barco, Cisco, NetApp, Hp, Microsoft & Other technology products vendors in design and implementation of various projects; essentially Audio-Visual collaborations, Security systems & IT Infrastructure for highly esteemed customers.
           </p>
-          <p className="text-center md:text-justify text-[#1b2232] mt-4 text-lg max-w-2xl mx-auto">At HIQOS, safety is of the essence in the execution of projects which make our staff equipped with standard safety trainings such as BOSIET, HUET, Firstaid, Emergency response and Standard HSE Training.</p>
-          <p className="text-center md:text-justify text-[#1b2232] mt-4 text-lg max-w-2xl mx-auto">Our management and technical team comprise of experienced technology professionals who have worked with industry leaders with international certifications</p>
+          <p className="text-center md:text-justify text-[#fff] mt-4 text-lg max-w-2xl mx-auto">At HIQOS, safety is of the essence in the execution of projects which make our staff equipped with standard safety trainings such as BOSIET, HUET, Firstaid, Emergency response and Standard HSE Training.</p>
+          <p className="text-center md:text-justify text-[#fff] mt-4 text-lg max-w-2xl mx-auto">Our management and technical team comprise of experienced technology professionals who have worked with industry leaders with international certifications</p>
         </div>
 
         <div ref={containerRef}
@@ -166,11 +167,10 @@ export default function About() {
       </div>
 
 
-      {/* This is the Crescent area  */}
-
-          {/* This is the one that shows for mobile */}
-      <div className=" p-5 min-h-[110vh] z-0 relative bg-[#f5f5f5]">
-        <div className="flex flex-col items-center gap-5 pt-10 justify-center  min-[1000px]:hidden">
+      {/* ========== OLD CRESCENT SECTION (commented out — replaced by CrescentSection component) ========== */}
+      {/*
+      <div className=" p-5 min-h-[110vh] border-red-500 border-2 z-0 relative bg-[#f5f5f5]">
+        <div className="flex flex-col border-green-500 border-2 items-center gap-5 pt-10 justify-center  min-[1000px]:hidden">
           <div className="h-5"></div>
           <Crescent
             color="#4f4"
@@ -209,10 +209,9 @@ export default function About() {
         </div>
 
 
-        {/* This part is for the desktop view */}
+        <div className="h-80 relative  border-red-500 border-2">
 
-        
-        <div className="hidden min-[1000px]:block">
+        <div className="hidden  min-[1000px]:block">
           <Crescent
             color="#4f46e5"
             maskId="crescent-mask-4"
@@ -246,9 +245,14 @@ export default function About() {
             cutY={-37}
             cutR={87}
             cutX={70}
-          />
+            />
         </div>
+            </div>
       </div>
+      */}
+
+      {/* ========== NEW CRESCENT SECTION (responsive — Approach A) ========== */}
+      <CrescentSection />
 
       <div ref={partnersSectionRef} className="p-4 sm:px-10 md:px-16">
         <h2 ref={partnersHeadingRef} className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-12 bg-linear-to-r from-white via-[#e80500] to-[#1b2232] bg-clip-text text-transparent p-4">Our Partners</h2>

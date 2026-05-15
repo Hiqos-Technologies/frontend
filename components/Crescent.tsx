@@ -53,6 +53,8 @@ export default function Crescent({ color, maskId, className, title, text, icon, 
        ref={svgRef}
        onMouseEnter={onEnter}
       onMouseLeave={onLeave}
+      onTouchStart={(e) => { e.preventDefault(); onEnter(); }}
+      onTouchEnd={() => onLeave()}
       className={className}
       width="50%"
       height="350"

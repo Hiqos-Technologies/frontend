@@ -3,6 +3,7 @@ import "./globals.css";
 import { DM_Sans, Montserrat } from "next/font/google";
 
 import Footer from "@/components/Footer";
+import GsapCleaner from "@/components/GsapCleaner";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
@@ -37,7 +38,9 @@ export default function RootLayout({
       >
         <SidebarProvider>
           <Navbar/>
-          {children}
+          <GsapCleaner>
+            {children}
+          </GsapCleaner>
           <Footer/>
           <Sidebar/>
         </SidebarProvider>

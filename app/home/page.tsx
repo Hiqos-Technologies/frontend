@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
+import Info from "@/components/info";
+import Link from "next/link";
 import Marquee from "@/components/Marquee";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import WhoWeAre from "@/components/WhoWeAre";
 import gsap from "gsap";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 // import { Button } from "@/components/ui/button"
@@ -28,7 +30,7 @@ export default function Home() {
 
   const slides = [
     {
-      image: "/interlinks.jpg",
+      image: "/AISolar.jpeg",
       title: "High Quality of Service",
       description: "Powering secure and connected environments",
       image2: "",
@@ -40,7 +42,7 @@ export default function Home() {
       description: "Experienced minds behind every solution",
     },
     {
-      image: "/big_connected_devices.jpg",
+      image: "/connectedWorld.jpeg",
       title: "Innovation & Technology",
       description: "Building the future with cutting-edge solutions",
     },
@@ -111,8 +113,19 @@ export default function Home() {
       }
     });
 
-    // Cleanup all GSAP animations
-    return () => ctx.revert();
+    // Cleanup all GSAP animations — explicitly kill ScrollTriggers
+    // to remove any DOM mutations before React unmounts
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        if (
+          videoContainerRef.current?.contains(t.trigger as Node) ||
+          marqueeRef.current?.contains(t.trigger as Node)
+        ) {
+          t.kill();
+        }
+      });
+      ctx.revert();
+    };
   }, []);
 
   const goToSlide = (index: number) => {
@@ -185,7 +198,7 @@ export default function Home() {
         {/* Navigation Arrows */}
         <button
           onClick={goToPrevious}
-          className="absolute max-[400px]:left-1 sm:left-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
+          className="absolute left-2 sm:left-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +217,7 @@ export default function Home() {
         </button>
         <button
           onClick={goToNext}
-          className="absolute max-[400px]:right-1 sm:right-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
+          className="absolute right-2 sm:right-4 top-70 md:top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -238,6 +251,8 @@ export default function Home() {
         </div>
       </div>
       )}
+      <WhoWeAre />
+      <Info />
       <div ref={videoContainerRef} className='mb-8'>
         <video
           ref={videoRef}
@@ -261,6 +276,32 @@ export default function Home() {
     
       <div ref={marqueeRef}>
         <Marquee/>
+      </div>
+
+      {/* CTA Banner */}
+      <div className="mx-4 md:mx-8 lg:mx-16 my-12 rounded-2xl overflow-hidden border border-gray-200 flex flex-col-reverse md:flex-row">
+        {/* Text side */}
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center p-8 md:p-12 text-center md:text-left">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            Available to Deliver Top Notch Services
+          </h2>
+          <Link
+            href="/contact"
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300"
+          >
+            Talk to an Expert
+          </Link>
+        </div>
+        {/* Image side with overlay */}
+        <div className="relative w-full md:w-1/2 h-64 md:h-80">
+          <Image
+            src="/working.jpg"
+            alt="Our team at work"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[#1b2232]/70" />
+        </div>
       </div>
     </>
   );

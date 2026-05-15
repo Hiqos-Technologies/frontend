@@ -57,7 +57,7 @@ We ensure consistent support and monitoring by regular performance evaluation, a
       modalDescription: `We design access control systems that recognizes, authenticate, and authorizes access and movement within your space or organization giving protection and ensuring security.
         Information and Security are a vital part of any household or business, this is why we design an access control that allows for flexible control over personnel movement and access to information.
         There are several types of access based on level, we use unique points like fingerprint since no two fingerprints are the same. This ensures validity and safety.`,
-      modalImages: ["/Saeed.jpeg"],
+      modalImages: ["/Saeed.jpeg","/speedlane.jpeg"],
       additionalText: `We design and put in place various access control systems ranging from standalone electronic doors, to networked proximity access, speed stiles, turnstiles, bollards and automatic gate barriers.
         We serve both the home use and commercial purposes such as hospitality industry and large office environment.
         Our access control systems is not limited to entry but can also be used in gathering data, integration with canteen management system which helps provide an efficient system while saving time and resources.`,
@@ -81,7 +81,7 @@ We ensure consistent support and monitoring by regular performance evaluation, a
       modalDescription: `A control room is an integral part of any business where activities are monitored and controlled. At HIQOS, we help you design a control room to improve operations and efficiency.
 
 We help with customized control room solutions for a wide range of applications. Our engineers will help with the most suitable control room for your business need.`,
-      modalImages: ["/control-room.jpg", "/control-room2.jpg"],
+      modalImages: ["/Controlroom1.jpeg", "/ControlRoom2.jpeg"],
       additionalText: `Whether you want a state of the art or simple functional control room, we have the right solution for you.
 
 We understand that a well designed control room is your assurance of safer operations, attentive monitoring, quicker responses, as well as higher productivity`,
@@ -123,7 +123,7 @@ We are a CISCO Certified partner in building advanced networks, we are also lice
         "We Offer efficient, reliable, and durable solar energy solutions in consumer as well as commercial spaces",
       image: "/solar.svg",
       modalDescription: `In partnership with World leaders in Solar technologies, the likes of Jinko and Canadian Solar Inc. Hiqos Technologies limited has delivered several solar projects across the country. We offer efficient, reliable and durable solar solution in consumer as well as commercial space`,
-      modalImages: ["/solar1.jpg", "/solar2.jpg"],
+      modalImages: ["/solarInstall.jpeg", "/goGreen.jpeg"],
       additionalText: `Our solar solutions are designed to meet the unique needs of our clients, whether it's for residential, commercial, or industrial applications. We provide end-to-end services, from initial consultation and system design to installation and ongoing maintenance.`,
     },
     {
@@ -135,7 +135,7 @@ We are a CISCO Certified partner in building advanced networks, we are also lice
       modalDescription: `To support safe and efficient field operation, oil and gas companies invest heavily in control and monitoring systems.
 
 The challenge is that, while wellheads may produce for decades, the life cycle of controllers and other automation technologies is far shorter and usually linked to a specific lift method.`,
-      modalImages: ["/wellhead1.jpg", "/wellhead2.jpg"],
+      modalImages: ["/sps1.webp", "/sps2.webp"],
       additionalText: `When proprietary systems inevitably require repair and replacement, companies struggle with vendor lock-in and product obsolescence. Legacy systems often lack interoperability and present security vulnerabilities, but optimizing proprietary systems with the latest I oT-based solutions is a complex, time-consuming, and cost-prohibitive process, that is what our smart wellhead automation system has come to solve.`,
     },
   ];

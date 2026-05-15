@@ -88,12 +88,24 @@ export default function Footer() {
             Phone: +2348065022047 <br />
           </p>
         
-          <h2 className="font-bold font-dm-sans mt-5">HIQOS Ltd. HQ</h2>
+          <h2 className="font-bold font-dm-sans mt-5">HIQOS International Office</h2>
           <p>
-            41, Akin Osiyemi Street, <br /> Off Allen Avenue, Ikeja, Lagos,
-            Nigeria. <br />
-            Phone: +234 1 342 5678 <br />
+            415, Walnut Drive Murphy, <br /> Texas TX75094,
+            USA. <br />
+            Phone: +1972 499 4649 <br />
           </p>
+          <div className="mt-5">
+            <h2 className="font-bold text-lg font-dm-sans">Email</h2>
+            <p className="font-dm-sans">
+              For general inquiries: <br />
+              <a href="mailto:business@hiqos.net" className="text-blue-400 hover:text-blue-300">
+                business@hiqos.net
+              </a> <br />
+               <a href="mailto:sales@hiqos.net" className="text-blue-400 hover:text-blue-300">
+                sales@hiqos.net
+              </a>
+            </p>
+          </div>
         </div>
         <div className="">
           <h2 className="font-bold text-lg pb-2">Services</h2>
