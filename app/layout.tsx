@@ -1,25 +1,11 @@
 import "./globals.css";
 
-import { DM_Sans, Montserrat } from "next/font/google";
-
 import Footer from "@/components/Footer";
 import GsapCleaner from "@/components/GsapCleaner";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import { SidebarProvider } from "@/components/SidebarContext";
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Hiqos Tech",
@@ -34,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} ${dmSans.variable} antialiased `}
+        className={`antialiased flex flex-col min-h-screen`}
       >
         <SidebarProvider>
           <Navbar/>
-          <GsapCleaner>
-            {children}
-          </GsapCleaner>
+          <main className="flex-1">
+            <GsapCleaner>
+              {children}
+            </GsapCleaner>
+          </main>
           <Footer/>
           <Sidebar/>
         </SidebarProvider>

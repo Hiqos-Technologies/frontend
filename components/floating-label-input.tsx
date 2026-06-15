@@ -8,6 +8,7 @@ interface FloatingLabelInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   error?: string;
+  optional?: boolean;
 }
 
 export function FloatingLabelInput({
@@ -18,6 +19,7 @@ export function FloatingLabelInput({
   onChange,
   placeholder,
   error,
+  optional = false,
 }: FloatingLabelInputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = value.trim().length > 0;
@@ -48,6 +50,7 @@ export function FloatingLabelInput({
         }`}
       >
         {placeholder}
+        { optional && <span className="text-gray-500"> (Optional)</span>}
       </label>
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

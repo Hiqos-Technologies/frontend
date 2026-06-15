@@ -16,7 +16,7 @@ const sections = [
     subheading: "Trusted Technology Partner",
     description:
       "We combine deep industry expertise with cutting-edge solutions to deliver systems that are secure, scalable, and built for the future.",
-    image: "/WhyHiqos1.jpeg",
+    image: "/network.jpeg",
     imageAlt: "Hiqos control room solutions",
     imagePosition: "left" as const,
   },
@@ -26,7 +26,7 @@ const sections = [
     subheading: "End-to-End Solutions",
     description:
       "From procurement and installation to maintenance and support, we manage the full lifecycle of your technology infrastructure.",
-    image: "/engineers.jpeg",
+    image: "/kit_up.jpeg",
     imageAlt: "Hiqos conference room setup",
     imagePosition: "right" as const,
   },
@@ -36,7 +36,7 @@ const sections = [
     subheading: "Quality Without Compromise",
     description:
       "Every project we deliver reflects our commitment to excellence, reliability, and long-term client satisfaction.",
-    image: "/Commitment.jpeg",
+    image: "/img1.jpg",
     imageAlt: "Hiqos team at work",
     imagePosition: "left" as const,
   },
@@ -127,7 +127,7 @@ export default function Info() {
             >
               {/* Image side */}
               <div data-info-image className="lg:w-1/2 w-full">
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={section.image}
                     alt={section.imageAlt}

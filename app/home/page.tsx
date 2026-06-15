@@ -14,16 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // import { Button } from "@/components/ui/button"
 
-// Skeleton component
-function Skeleton({ className }: { className?: string }) {
-  return (
-    <div className={`animate-pulse bg-gray-300 ${className}`} />
-  );
-}
-
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
@@ -54,17 +46,11 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    // Simulate loading - show skeleton for 1.5 seconds
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
 
     return () => {
-      clearTimeout(loadingTimer);
       clearInterval(interval);
     };
   }, [slides.length]);
@@ -142,21 +128,6 @@ export default function Home() {
 
   return (
     <>
-      {isLoading ? (
-        // Skeleton loading state
-        <div className="h-screen relative overflow-hidden bg-gray-100">
-          <div className="relative h-full w-full">
-            <Skeleton className="absolute inset-0 bg-gray-200" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center px-4 max-w-4xl">
-                <Skeleton className="h-16 w-3/4 mx-auto mb-6 rounded" />
-                <Skeleton className="h-8 w-1/2 mx-auto rounded" />
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-        // Actual content
         <div className="h-screen relative overflow-hidden">
           <div className="relative h-full w-full">
           {slides.map((slide, index) => (
@@ -250,7 +221,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      )}
       <WhoWeAre />
       <Info />
       <div ref={videoContainerRef} className='mb-8'>

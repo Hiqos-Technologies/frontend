@@ -44,13 +44,13 @@ export default function Navbar() {
 
 
   return (
-    <nav ref={navRef} className={`fixed  z-1000 top-0 overflow-hidden left-0 right-0 flex justify-between items-center p-4 sm:px-16 md:px-10 lg:px-20 transition-all duration-300 ${
+    <nav ref={navRef} className={`fixed  z-1000 top-0 overflow-hidden left-0 right-0 flex justify-between items-center  px-4 py-0 sm:px-16 md:px-10 lg:px-20 transition-all duration-300 ${
       isScrolled
-        ? 'bg-white/90 backdrop-blur-md shadow-lg border-b border-gray-200 w-11/12 mx-auto rounded-md mt-4'
+        ? 'bg-white/90 backdrop-blur-md shadow-lg border-b  border-gray-200 w-11/12 mx-auto rounded-md mt-4'
         : 'bg-transparent border-none border-4  '
     }`}>
-      <div>
-        <Image src={isScrolled ? "/Logo.png" : "/logo12.png"} alt={"Hiqos-Logo"} width={80} height={80}/>
+      <div className="relative w-22 h-20">
+        <Image src={isScrolled ? "/Logo.png" : "/logo12.png"} alt={"Hiqos-Logo"} fill priority className="object-contain "/>
       </div>
 
       <div className="flex items-center gap-6 max-md:hidden">

@@ -130,7 +130,7 @@ const LeadersSection: React.FC = () => {
     {
       name: "Adeshina Olalekan",
       role: "Chief Technical Officer",
-      image: "/saeed1.jpeg",
+      image: "/Lekan.png",
     },
     {
       name: "Idowu Psalmxyn",

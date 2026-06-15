@@ -48,9 +48,9 @@ export default function Contact() {
       newErrors.email = "Please enter a valid email address";
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    }
+    // if (!formData.phone.trim()) {
+    //   newErrors.phone = "Phone number is required";
+    // }
 
     if (!formData.message.trim()) {
       newErrors.message = "Message is required";
@@ -126,8 +126,9 @@ export default function Contact() {
               type="tel"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="Phone Number "
-              error={errors.phone}
+              placeholder="Phone Number"
+              optional={true}
+              // error={errors.phone}
             />
             <FloatingLabelTextarea
               id="message"

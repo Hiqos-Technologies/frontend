@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import logo from "@/public/logo12.png";
+// import logo from "@/public/logo12.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,8 +69,8 @@ export default function Footer() {
     >
       <div ref={contentRef} className="flex flex-col sm:flex-row sm:gap-0 gap-8 sm:items-end justify-between">
         <div>
-          <Image src={logo} alt={"Hiqos_logo"} width={120} height={120} />
-          <p className=" text-base sm:text-lg md:text-2xl font-semibold">
+          <Image src={"/logo12.png"} alt={"Hiqos_logo"} width={120} height={120} />
+          <p className=" text-sm  font-semibold">
             Future-Ready Networks, Engineered Today.
           </p>
         </div>

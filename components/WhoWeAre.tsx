@@ -85,7 +85,7 @@ export default function WhoWeAre() {
 
           {/* Right Side — Single Image */}
           <div className="lg:w-7/12 w-full relative">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-lg">
               <Image
                 src="/control_room2.jpg"
                 alt="Hiqos control room solutions"
