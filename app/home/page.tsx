@@ -57,11 +57,15 @@ export default function Home() {
 
   // GSAP ScrollTrigger animations
   useEffect(() => {
+    // Snapshot refs so cleanup reads stable values, not mutable .current
+    const videoEl = videoContainerRef.current;
+    const marqueeEl = marqueeRef.current;
+
     const ctx = gsap.context(() => {
       // Video container animation - animate in from bottom with scale
-      if (videoContainerRef.current) {
+      if (videoEl) {
         gsap.fromTo(
-          videoContainerRef.current,
+          videoEl,
           { y: 100, opacity: 0, scale: 0.9 },
           {
             y: 0,
@@ -70,7 +74,7 @@ export default function Home() {
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: videoContainerRef.current,
+              trigger: videoEl,
               start: "top 80%",
               end: "top 20%",
               toggleActions: "play none none reverse",
@@ -80,9 +84,9 @@ export default function Home() {
       }
 
       // Marquee animation - slide in from sides
-      if (marqueeRef.current) {
+      if (marqueeEl) {
         gsap.fromTo(
-          marqueeRef.current,
+          marqueeEl,
           { y: 50, opacity: 0 },
           {
             y: 0,
@@ -90,7 +94,7 @@ export default function Home() {
             duration: 0.8,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: marqueeRef.current,
+              trigger: marqueeEl,
               start: "top 85%",
               toggleActions: "play none none reverse",
             },
@@ -99,19 +103,9 @@ export default function Home() {
       }
     });
 
-    // Cleanup all GSAP animations — explicitly kill ScrollTriggers
-    // to remove any DOM mutations before React unmounts
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => {
-        if (
-          videoContainerRef.current?.contains(t.trigger as Node) ||
-          marqueeRef.current?.contains(t.trigger as Node)
-        ) {
-          t.kill();
-        }
-      });
-      ctx.revert();
-    };
+    // Cleanup: gsap.context() + ctx.revert() already kills every animation
+    // and ScrollTrigger created inside it, so no manual kill loop is needed.
+    return () => ctx.revert();
   }, []);
 
   const goToSlide = (index: number) => {
@@ -223,26 +217,6 @@ export default function Home() {
       </div>
       <WhoWeAre />
       <Info />
-      <div ref={videoContainerRef} className='mb-8'>
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="mx-auto w-full  max-w-4xl h-100 md:h-150 px-2 my-6 md:my-8 rounded-xl"
-          poster="https://res.cloudinary.com/dvjx9x8l9/video/upload/v1770116282/Hiqos/vid_of_SAT_hzuyqq.jpg"
-        >
-          <source
-            src="https://res.cloudinary.com/dvjx9x8l9/video/upload/vc_h264,q_auto,f_mp4/v1770116282/Hiqos/vid_of_SAT_hzuyqq.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <p className="font-dm-sans font-bold text-center">
-          Audio Visual Installation Setup in Shell Atlantic Towers
-        </p>
-      </div>
     
       <div ref={marqueeRef}>
         <Marquee/>
@@ -268,6 +242,7 @@ export default function Home() {
             src="/working.jpg"
             alt="Our team at work"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-[#1b2232]/70" />

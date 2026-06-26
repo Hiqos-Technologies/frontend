@@ -51,7 +51,7 @@ export default function Marquee() {
 
   return (
     <>
-      <h2 className=' sm:px-16 md:px-10 lg:px-20  text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-12 bg-linear-to-r from-white via-[#e80500] to-[#1b2232] bg-clip-text text-transparent'>Our Clients</h2>
+      <h2 className=' sm:px-16 md:px-10 lg:px-20 pt-4  text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-12 bg-linear-to-r from-white via-[#e80500] to-[#1b2232] bg-clip-text text-transparent'>Our Clients</h2>
       <div className='w-full overflow-hidden py-8'>
         <div ref={trackRef} className='flex w-max gap-35 items-center'>
           {[...ClientImages, ...ClientImages].map((src, index) => (
